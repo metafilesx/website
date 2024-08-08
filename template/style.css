@@ -36,18 +36,23 @@ nav ul li a {
     color: #fff;
     font-weight: bold;
 }
+div {
+    width: 90%;
+    margin: 10px auto;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 main {
-    width: 60%;
-    display: inline;
-    float: left;
+    flex: 3;
     background-color: #fff;
     padding: 10px;
     text-align: justify;
 }
 aside {
-    width: 30%;
-    display: inline;
-    float: right;
+    flex: 1;
     background-color: #fff;
     padding: 10px;
     text-align: justify;

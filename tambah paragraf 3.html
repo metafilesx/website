@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Tag Paragraf</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        #output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            white-space: pre-wrap; /* Membiarkan spasi dan baris baru */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tambah Tag Paragraf</h1>
+    <textarea id="inputText" placeholder="Masukkan teks di sini..."></textarea>
+    <br>
+    <button onclick="processText()">Proses Teks</button>
+    <h2>Hasil:</h2>
+    <div id="output"></div>
+
+    <script>
+        function escapeHtml(text) {
+            return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        function processText() {
+            // Ambil teks dari textarea
+            const text = document.getElementById('inputText').value;
+
+            // Pisahkan teks menjadi paragraf berdasarkan baris kosong
+            const paragraphs = text.split(/\n\s*\n/);
+
+            // Format setiap paragraf dengan menambahkan <p> dan </p>, dan escape HTML
+            const formattedText = paragraphs.map(paragraph => 
+                `&lt;p&gt;${escapeHtml(paragraph)}&lt;/p&gt;`
+            ).join('\n');
+
+            // Tampilkan hasil di elemen dengan id "output"
+            document.getElementById('output').innerHTML = formattedText;
+        }
+    </script>
+</body>
+</html>
